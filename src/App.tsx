@@ -42,7 +42,7 @@ const App: FC = () => {
         {
           colors.map(color => (
             <button
-              className={`px-5 py-2 border text-red rounded-md m-3 text-primary-900`}
+              className={`px-5 py-2 border text-red rounded-md m-3 text-primary-900 hover:text-xl display`}
               key={color}
               onClick={() => changeColor(color)}
             >change to {color}</button>
