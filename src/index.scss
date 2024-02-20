@@ -14,7 +14,7 @@
 
 @function generate-color-shades($color, $steps) {
   $shades: ();
-  $step: 60 / $steps;
+  $step: calc(60 / $steps);
 
   @for $i from 1 through $steps {
     $darkened-color: darken-color($color, $step * $i);
@@ -34,11 +34,11 @@
   }
 
   $colors-with-hex: (
-    red: #ffdbdb,
-    pink: #ffddfd,
-    blue: #e8ebff,
-    violet: #eedcff,
-    yellow: #ffffdc,
+    "red": #ffdbdb,
+    "pink": #ffddfd,
+    "blue": #e8ebff,
+    "violet": #eedcff,
+    "yellow": #ffffdc,
   );
 
   @each $color-name, $color-code in $colors-with-hex {
