@@ -1,6 +1,6 @@
 import { FC, Fragment, ReactNode, createContext, useContext, } from "react";
 
-const colors = ["pink", "red", "blue"] as const;
+const colors = ["pink", "red", "blue", "violet", "yellow"] as const;
 
 const ChangeColorContext = createContext<{
   changeColor: (color: typeof colors[number]) => void;
@@ -29,18 +29,18 @@ const App: FC = () => {
   return (
     <Fragment>
       <div id="main-div">
-        <h1 className="text-primary-100">Hello World 100</h1>
-        <h1 className="text-primary-200">Hello World 200</h1>
-        <h1 className="text-primary-300">Hello World 300</h1>
-        <h1 className="text-primary-400">Hello World 400</h1>
-        <h1 className="text-primary-500">Hello World 500</h1>
-        <h1 className="text-primary-600">Hello World 600</h1>
-        <h1 className="text-primary-700">Hello World 700</h1>
-        <h1 className="text-primary-800">Hello World 800</h1>
-        <h1 className="text-primary-900">Hello World 900</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-100">Hello World 100</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-200">Hello World 200</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-300">Hello World 300</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-400">Hello World 400</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-500">Hello World 500</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-600">Hello World 600</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-700">Hello World 700</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-800">Hello World 800</h1>
+        <h1 className="text-3xl mb-4 tracking-wide text-primary-900">Hello World 900</h1>
 
         {
-          (["pink", "blue", "red"] as const).map(color => (
+          colors.map(color => (
             <button
               className={`px-5 py-2 border text-red`}
               key={color}

@@ -33,19 +33,21 @@
     }
   }
 
-  html[data-theme="pink"] {
-    $color-shades: generate-color-shades(#ffe8fe, 9);
+  $colors-with-hex: (
+    red: #ffdbdb,
+    pink: #ffddfd,
+    blue: #e8ebff,
+    violet: #eedcff,
+    yellow: #ffffdc,
+  );
 
-    @each $shade, $value in $color-shades {
-      --color-primary-#{$shade}: #{$value};
-    }
-  }
+  @each $color-name, $color-code in $colors-with-hex {
+    html[data-theme="#{$color-name}"] {
+      $color-shades: generate-color-shades($color-code, 9);
 
-  html[data-theme="blue"] {
-    $color-shades: generate-color-shades(#e8ebff, 9);
-
-    @each $shade, $value in $color-shades {
-      --color-primary-#{$shade}: #{$value};
+      @each $shade, $value in $color-shades {
+        --color-primary-#{$shade}: #{$value};
+      }
     }
   }
 }
