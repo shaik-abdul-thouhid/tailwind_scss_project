@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@function darken-color($color, $percentage) {
+  $darkened: darken($color, $percentage);
+
+  $red: red($darkened);
+  $green: green($darkened);
+  $blue: blue($darkened);
+
+  @return #{$red} #{$green} #{$blue};
+}
+
+@function generate-color-shades($color, $steps) {
+  $shades: ();
+  $step: 60 / $steps;
+
+  @for $i from 1 through $steps {
+    $darkened-color: darken-color($color, $step * $i);
+    $shades: map-merge($shades, ($i * 100: $darkened-color));
+  }
+
+  @return $shades;
+}
+
+@layer base {
+  :root {
+    $color-shades: generate-color-shades(#ffe8e8, 9);
+
+    @each $shade, $value in $color-shades {
+      --color-primary-#{$shade}: #{$value};
+    }
+  }
+
+  html[data-theme="pink"] {
+    $color-shades: generate-color-shades(#ffe8fe, 9);
+
+    @each $shade, $value in $color-shades {
+      --color-primary-#{$shade}: #{$value};
+    }
+  }
+
+  html[data-theme="blue"] {
+    $color-shades: generate-color-shades(#e8ebff, 9);
+
+    @each $shade, $value in $color-shades {
+      --color-primary-#{$shade}: #{$value};
+    }
+  }
+}
